@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guava·va - Procurement Solutions</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s 0.2s forwards;
+}
+.contact {
+    display: inline-block;
+    color: #000000;
+    background-color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #ffffff;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s 0.4s forwards;
+}
+.contact:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        #000000, #0a0a0a, #141414, #1e1e1e, 
+        #282828, #323232, #3c3c3c, #292929);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: 0;
+    filter: blur(50px);
+}
+.background-animation::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: url(#noise);
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+</style>
+</head>
+<body>
+<div class="background-animation"></div>
+<div class="container">
+    <h1>GUAVA·VA</h1>
+    <p>Global procurement, simplified.</p>
+    <a href="mailto:contact@guavava.com" class="contact">contact@guavava.com</a>
+</div>
+<svg width="0" height="0">
+    <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feBlend mode="overlay" in="SourceGraphic" />
+    </filter>
+</svg>
+</body>
+</html>
