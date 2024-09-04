@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guava·va - Procurement Solutions</title>
+<title>GUAVA•VA - Global Procurement</title>
 <style>
 body, html {
     margin: 0;
@@ -23,25 +23,19 @@ body, html {
     max-width: 600px;
     width: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 h1 {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s forwards;
 }
 p {
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 2rem;
     max-width: 100%;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s 0.2s forwards;
 }
 .contact {
     display: inline-block;
@@ -53,69 +47,75 @@ p {
     font-weight: 500;
     transition: all 0.3s ease;
     border: 1px solid #ffffff;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s 0.4s forwards;
 }
 .contact:hover {
     background-color: #000000;
     color: #ffffff;
 }
-.background-animation {
-    position: absolute;
+.global-connections {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, 
-        #000000, #0a0a0a, #141414, #1e1e1e, 
-        #282828, #323232, #3c3c3c, #292929);
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    z-index: 0;
-    filter: blur(50px);
+    z-index: 1;
 }
-.background-animation::after {
-    content: "";
+.time-line {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    width: 1px;
     height: 100%;
-    background: inherit;
-    filter: url(#noise);
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+    animation: pulse 4s infinite alternate;
 }
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.path {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    animation: fly 15s linear infinite;
 }
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+@keyframes fly {
+    0% { width: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { width: 200%; opacity: 0; }
 }
 </style>
 </head>
 <body>
-<div class="background-animation"></div>
+<div class="global-connections" id="global-connections"></div>
 <div class="container">
-    <h1>GUAVA·VA</h1>
-    <p>Global procurement, simplified.</p>
+    <h1>GUAVA•VA</h1>
+    <p>Global Procurement, Simplified.</p>
     <a href="mailto:contact@guavava.com" class="contact">contact@guavava.com</a>
 </div>
-<svg width="0" height="0">
-    <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-        <feBlend mode="overlay" in="SourceGraphic" />
-    </filter>
-</svg>
+<script>
+function createGlobalConnections() {
+    const container = document.getElementById('global-connections');
+    
+    // Create time zone lines
+    for (let i = 0; i < 24; i++) {
+        const line = document.createElement('div');
+        line.classList.add('time-line');
+        line.style.left = `${(i / 24) * 100}%`;
+        line.style.animationDelay = `${i * 0.2}s`;
+        container.appendChild(line);
+    }
+    
+    // Create flight paths
+    for (let i = 0; i < 15; i++) {
+        const path = document.createElement('div');
+        path.classList.add('path');
+        path.style.top = `${Math.random() * 100}%`;
+        path.style.left = `-50%`;  // Start off-screen
+        path.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;  // Slight angle variation
+        path.style.animationDelay = `${i * 1}s`;
+        container.appendChild(path);
+    }
+}
+createGlobalConnections();
+</script>
 </body>
 </html>
