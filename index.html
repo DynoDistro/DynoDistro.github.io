@@ -66,12 +66,14 @@ p {
     height: 100%;
     background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
     animation: pulse 4s infinite alternate;
+	filter: blur(0.5px);  /* Add blur effect */
 }
 .path {
     position: absolute;
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
     animation: fly 15s linear infinite;
+	filter: blur(0.5px);  /* Add blur effect */
 }
 @keyframes pulse {
     0% { opacity: 0.3; }
